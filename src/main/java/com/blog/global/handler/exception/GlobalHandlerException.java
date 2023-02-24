@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.blog.api.response.ApiResponse;
 import com.blog.user.custom.exception.CategoryNotFoundException;
+import com.blog.user.custom.exception.CommentNotFoundException;
 import com.blog.user.custom.exception.PostNotFoundException;
 import com.blog.user.custom.exception.UserNotExistException;
 import com.blog.user.custom.exception.UserNotFoundException;
@@ -65,5 +66,13 @@ public class GlobalHandlerException {
 		String message = ex.getMessage();
 		ApiResponse response = new ApiResponse(message,false);
 		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(CommentNotFoundException.class)
+	public ResponseEntity<ApiResponse> handlerCommentNotFoundException(
+			CommentNotFoundException ex
+			){
+		String message = ex.getMessage();
+		return new ResponseEntity<>(new ApiResponse(message, false),HttpStatus.BAD_REQUEST);
 	}
 }

@@ -10,6 +10,7 @@ import com.blog.entity.Post;
 import com.blog.payload.CommentDto;
 import com.blog.repository.CommentRepository;
 import com.blog.repository.PostRepository;
+import com.blog.user.custom.exception.CommentNotFoundException;
 import com.blog.user.custom.exception.PostNotFoundException;
 import com.blog.user.service.ICommentService;
 
@@ -39,12 +40,17 @@ public class CommentServiceImpl implements ICommentService{
 //		BeanUtils.copyProperties(commnetDb, commentDto);
 		
 //		return commentDto;
-		return modelMapper.map(commnetDb, CommentDto.class);
+		return this.modelMapper.map(commnetDb, CommentDto.class);
 	}
 
+	
+	
 	@Override
 	public void deleteComment(Integer commentId) {
 		
+		Comment commentDb = commentRepository.findById(commentId).orElseThrow(() -> new CommentNotFoundException("Comment", "Comment Id", commentId));
+		
+		commentRepository.delete(commentDb);
 	}
 
 	
