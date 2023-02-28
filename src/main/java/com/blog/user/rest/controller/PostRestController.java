@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.blog.api.response.ApiResponse;
-import com.blog.java.configuration.AppConstants;
+import com.blog.java.security.configuration.AppConstants;
 import com.blog.payload.PostDto;
 import com.blog.payload.PostResponse;
 import com.blog.user.service.FileService;

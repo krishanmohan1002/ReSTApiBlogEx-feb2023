@@ -1,4 +1,4 @@
-package com.blog.java.configuration;
+package com.blog.java.security.configuration;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

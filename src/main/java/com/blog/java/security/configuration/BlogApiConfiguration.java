@@ -1,4 +1,4 @@
-package com.blog.java.configuration;
+package com.blog.java.security.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
